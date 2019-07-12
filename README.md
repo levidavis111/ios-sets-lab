@@ -14,12 +14,29 @@ Output:
 `169.375`
 
 
+var input: Set <Double> = [161, 182, 161, 154, 176, 170, 167, 171, 170, 174]
+var sum: Double = 0
+for i in input {
+sum += i
+}
+var average: Double = sum / Double(input.count)
+print(average)
+
 ## Question 2
 
 Determine if a String is a pangram. A pangram is a string that contains every letter of the alphabet at least once.
 
  e.g `"The quick brown fox jumps over the lazy dog"` is a pangram
  e.g `"The quick brown fox jumped over the lazy dog"` is NOT a pangram
+ 
+ let alphabetSet: Set<String> = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+ let lowerCaseTest: String = "The quick brown fox jumps over the lazy dog".lowercased()
+ var testSet: Set<String> = []
+ 
+ for i in lowerCaseTest {
+ testSet.insert(String(i))
+ }
+ print(alphabetSet.isSubset(of: testSet))
 
 
 ## Question 3
@@ -40,6 +57,20 @@ You are given an array `nums` representing the data status of the set S after th
  Input: `nums = [2,2]`
  Output: `[2,1]`
 
+var nums: [Int] = [1,2,2,4]
+var newSet: Set<Int> = []
+
+for i in 1...4 {
+if nums.contains(i) != true {
+newSet.insert(i)
+}
+var idealSet: Set<Int> = [1,2,3,4]
+var diff: Set<Int> = idealSet.subtracting(nums)
+newSet.insert(diff)
+}
+print(newSet)
+
+//NOT CORRECT
 
 ## Question 4
 
@@ -51,6 +82,21 @@ let arr2 = [1, 2, 3, 4, 5, 6]
 let arr3 = [5, 6, 7, 8, 9, 10, 11, 12]
 let arr4 = [1, 3, 4, 5, 6, 7, 9]
 ```
+
+let arr1 = [2, 4, 5, 6, 8, 10, 12]
+let arr2 = [1, 2, 3, 4, 5, 6]
+let arr3 = [5, 6, 7, 8, 9, 10, 11, 12]
+let arr4 = [1, 3, 4, 5, 6, 7, 9]
+
+
+var arrayOfArrs: [[Int]] = [arr1, arr2, arr3, arr4]
+var setArray: Set <Int> = []
+
+for i in arrayOfArrs {
+let _ = Set(i)
+setArray = setArray.union(Set(i))
+}
+print(setArray.sorted())
 
 
 ## Question 5
@@ -67,6 +113,14 @@ let list1: Set = [1, 3, 4, 6, 2, 7, 9]
 let list2: Set = [3, 7, 13, 10, 4]
 ```
 
+let list1: Set = [1, 3, 4, 6, 2, 7, 9]
+let list2: Set = [3, 7, 13, 10, 4]
+
+print(list1.intersection(list2))
+print(list1.symmetricDifference(list2))
+print(list1.union(list2))
+print(list1.subtracting(list2))
+print(list2.subtracting(list1))
 
 ## Question 6
 
@@ -87,9 +141,9 @@ print(spaceships.count)
 - 4
 - Nothing will be output
 - 0
-- This code will not compile
+- This code will not compile //THIS ONE
 - 1
-- This code will compile but crash
+- This code will compile but crash 
 
 
 ## Question 7
@@ -114,6 +168,6 @@ if spaceships1.isSubset(of: spaceships2) {
 
 - This code will compile but crash
 - "This is not a subset"
-- This code will not compile
+- This code will not compile //THIS ONE
 - "This is a subset"
 - Nothing will be output
